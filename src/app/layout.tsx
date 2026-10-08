@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
@@ -11,6 +11,12 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#0f172a',
+};
 
 export const metadata: Metadata = {
   title: 'SalesPulse | Atomic Sales Analytics Platform (2022 - 2024)',
@@ -27,7 +33,6 @@ export const metadata: Metadata = {
     'Dashboard',
   ],
   authors: [{ name: 'SalesPulse Intelligence Team' }],
-  viewport: 'width=device-width, initial-scale=1',
 };
 
 export default function RootLayout({
