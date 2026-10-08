@@ -1,8 +1,8 @@
 import React from 'react';
 import { MetricCard } from '@/components/molecules/MetricCard';
 import { YearlySalesSummary } from '@/types/sales';
-import { formatCurrency, formatPercent } from '@/lib/utils';
-import { DollarSign, TrendingUp, Target, Award, CalendarCheck, Wallet } from 'lucide-react';
+import { formatCurrency } from '@/lib/utils';
+import { DollarSign, Award, CalendarCheck, Wallet } from 'lucide-react';
 
 export interface KPIGridProps {
   summary: YearlySalesSummary;
@@ -57,7 +57,7 @@ export const KPIGrid: React.FC<KPIGridProps> = ({
       <MetricCard
         title="Threshold Qualifying"
         value={`${monthsAboveThreshold} / ${totalMonths}`}
-        subtitle={`${formatCurrency(salesAboveThreshold, true)} in qualified sales`}
+        subtitle={`${formatCurrency(salesAboveThreshold, true)} above ${formatCurrency(threshold, true)} threshold`}
         icon={<Award className="w-5 h-5" />}
         iconVariant={complianceRate >= 50 ? 'emerald' : 'amber'}
         badgeText={`${complianceRate}% Met`}

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
   ResponsiveContainer,
   BarChart,
@@ -14,7 +14,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ReferenceLine,
   Cell,
 } from 'recharts';
@@ -22,7 +21,7 @@ import { MonthlySalesRecord, ChartType } from '@/types/sales';
 import { ChartTypeSwitch } from '@/components/molecules/ChartTypeSwitch';
 import { Badge } from '@/components/atoms/Badge';
 import { formatCurrency } from '@/lib/utils';
-import { BarChart2, TrendingUp, Sparkles, CheckCircle2, AlertCircle } from 'lucide-react';
+import { BarChart2 } from 'lucide-react';
 
 export interface SalesTrendChartProps {
   data: MonthlySalesRecord[];
@@ -30,6 +29,14 @@ export interface SalesTrendChartProps {
   year: number;
   chartType: ChartType;
   onChartTypeChange: (type: ChartType) => void;
+}
+
+interface CustomSalesTooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    payload: MonthlySalesRecord;
+    value: number;
+  }>;
 }
 
 export const SalesTrendChart: React.FC<SalesTrendChartProps> = ({
@@ -40,9 +47,9 @@ export const SalesTrendChart: React.FC<SalesTrendChartProps> = ({
   onChartTypeChange,
 }) => {
   // Custom styled Tooltip
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload }: CustomSalesTooltipProps) => {
     if (active && payload && payload.length) {
-      const current = payload[0].payload as MonthlySalesRecord;
+      const current = payload[0].payload;
       const isAbove = current.sales >= threshold;
 
       return (

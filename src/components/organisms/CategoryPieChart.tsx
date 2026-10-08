@@ -9,8 +9,8 @@ import {
   Tooltip,
 } from 'recharts';
 import { CategorySalesRecord } from '@/types/sales';
-import { formatCurrency, formatPercent } from '@/lib/utils';
-import { PieChart as PieIcon, PieChartIcon } from 'lucide-react';
+import { formatCurrency } from '@/lib/utils';
+import { PieChart as PieIcon } from 'lucide-react';
 
 export interface CategoryPieChartProps {
   data: CategorySalesRecord[];
@@ -19,12 +19,20 @@ export interface CategoryPieChartProps {
 
 const CATEGORY_COLORS = ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b'];
 
+interface CustomPieTooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    payload: CategorySalesRecord;
+    value: number;
+  }>;
+}
+
 export const CategoryPieChart: React.FC<CategoryPieChartProps> = ({ data, year }) => {
   const totalSales = data.reduce((acc, curr) => acc + curr.sales, 0);
 
-  const CustomPieTooltip = ({ active, payload }: any) => {
+  const CustomPieTooltip = ({ active, payload }: CustomPieTooltipProps) => {
     if (active && payload && payload.length) {
-      const item = payload[0].payload as CategorySalesRecord;
+      const item = payload[0].payload;
       return (
         <div className="bg-slate-900/95 backdrop-blur-md text-white p-3 rounded-xl shadow-xl border border-slate-700/80 text-xs">
           <p className="font-semibold text-slate-100 text-sm mb-1">{item.category}</p>

@@ -19,10 +19,18 @@ export interface RegionalBarChartProps {
   year: number;
 }
 
+interface CustomRegionalTooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    payload: RegionalSalesRecord;
+    value: number;
+  }>;
+}
+
 export const RegionalBarChart: React.FC<RegionalBarChartProps> = ({ data, year }) => {
-  const CustomRegionalTooltip = ({ active, payload }: any) => {
+  const CustomRegionalTooltip = ({ active, payload }: CustomRegionalTooltipProps) => {
     if (active && payload && payload.length) {
-      const item = payload[0].payload as RegionalSalesRecord;
+      const item = payload[0].payload;
       return (
         <div className="bg-slate-900/95 backdrop-blur-md text-white p-3 rounded-xl shadow-xl border border-slate-700/80 text-xs">
           <p className="font-semibold text-slate-100 text-sm mb-1">{item.region} Division</p>

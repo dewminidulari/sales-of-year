@@ -5,7 +5,7 @@ import { SalesYear, ProductCategory } from '@/types/sales';
 import { YearSelector } from '@/components/molecules/YearSelector';
 import { CategoryFilter } from '@/components/molecules/CategoryFilter';
 import { ApiStatusBadge } from '@/components/molecules/ApiStatusBadge';
-import { BarChart3, Sparkles, ExternalLink, Github } from 'lucide-react';
+import { BarChart3, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 export interface DashboardHeaderProps {

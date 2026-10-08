@@ -1,5 +1,5 @@
 import React from 'react';
-import { Database, Layers, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Database, Layers } from 'lucide-react';
 import { Badge } from '@/components/atoms/Badge';
 
 export const DatasetMetaCard: React.FC = () => {

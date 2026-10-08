@@ -1,20 +1,16 @@
 import React from 'react';
 import { Badge } from '@/components/atoms/Badge';
 import { Button } from '@/components/atoms/Button';
-import { RefreshCw, Database, CheckCircle2 } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
 
 export interface ApiStatusBadgeProps {
   isLoading: boolean;
   onRefresh: () => void;
-  lastFetchedAt?: string;
-  sourceText?: string;
 }
 
 export const ApiStatusBadge: React.FC<ApiStatusBadgeProps> = ({
   isLoading,
   onRefresh,
-  lastFetchedAt,
-  sourceText = 'Next.js 15 API Route (/api/sales)',
 }) => {
   return (
     <div className="flex items-center gap-2">

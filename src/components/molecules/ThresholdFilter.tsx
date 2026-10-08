@@ -3,7 +3,6 @@ import { Input } from '@/components/atoms/Input';
 import { Button } from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
 import { DollarSign, SlidersHorizontal, CheckCircle2 } from 'lucide-react';
-import { formatCurrency } from '@/lib/utils';
 
 export interface ThresholdFilterProps {
   threshold: number;

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { MonthlySalesRecord } from '@/types/sales';
 import { Badge } from '@/components/atoms/Badge';
-import { formatCurrency, formatPercent } from '@/lib/utils';
+import { formatCurrency } from '@/lib/utils';
 import { Table, ArrowUpDown, CheckCircle, XCircle, Search } from 'lucide-react';
 
 export interface MonthlyDataTableProps {
